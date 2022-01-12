@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "pm2 start index.js --port $PORT",
+    "start": "pm2 start index.js",
     "stop": "pm2 stop index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

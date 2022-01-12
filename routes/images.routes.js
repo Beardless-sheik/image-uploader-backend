@@ -11,15 +11,18 @@ router.post('/', async(req, res) => {
     dateUploaded: localDateUtil.getCurrentDate(),
   })
   try {
-    const result = await newImage.save()
-    console.log(result);
-    res.status(201).json({createdData: result});
+    if(req.body.imageUrl) {
+      const result = await newImage.save()
+      console.log(result);
+      res.status(201).json({createdData: result});
+    }
+    throw new Error("no image Url passed")
   }
   catch(error) {
     console.log(error);
     res.status(500).json({ 
       message: 'Saving image failed!',
-      error: error,
+      error: error.message,
     });
   }
 })

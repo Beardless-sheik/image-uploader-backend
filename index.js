@@ -13,5 +13,5 @@ database.connectToDatabase();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.get('/', (req, res) => res.send('Upload Images API is running !'))
-app.listen(3000, () => console.log('Server ready'))
+app.listen(process.env.PORT, () => console.log('Server ready'))
 app.use('/api/images', images)

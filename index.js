@@ -7,11 +7,14 @@ const express = require('express'),
 		database = require('./database/database.js');
 const app = express();
 const dotenv = require('dotenv');
+const errorHandlerMiddleware = require('./middleware/error-handler.js');
 dotenv.config();
 
 database.connectToDatabase();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.get('/', (req, res) => res.send('Upload Images API is running !'))
-app.listen(process.env.PORT, () => console.log('Server ready'))
-app.use('/api/images', images)
+app.get('/', (req, res) => res.send('Upload Images API is running !'));
+
+app.use('/api/images', images);
+app.use(errorHandlerMiddleware);
+app.listen(process.env.PORT, () => console.log('Server ready'));

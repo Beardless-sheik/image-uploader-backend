@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/**
+ * Image Schema
+ */
 const imageSchema = new Schema({
 	cloudinaryURL: String,
 	dateUploaded: String,

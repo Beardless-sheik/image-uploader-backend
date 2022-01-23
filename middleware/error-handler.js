@@ -108,7 +108,7 @@ function errorHandlerMiddleware(error, request, response, next) {
 		return error.toString();
 	}
 
-	return "";
+	return "default error";
 }
 
 /**

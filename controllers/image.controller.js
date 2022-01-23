@@ -18,10 +18,6 @@ const postImage = async(req, res, next) => {
   }
   catch(error) {
     const httpError = createHttpError(500, error);
-    // res.status(500).json({ 
-    //   message: 'Saving image failed!',
-    //   error: error.message,
-    // });
     return next(httpError, {});
   }
 }

@@ -4,8 +4,8 @@
   "description": "Image uploader backend API build using Express using MongoDB storage",
   "main": "index.js",
   "scripts": {
-    "start-dev": "nodemon index.js NODE_ENV=production",
-    "start": "nodemon index.js",
+    "start": "set NODE_ENV=production&&nodemon index.js",
+    "start-dev": "set NODE_ENV=development&&nodemon index.js",
     "dev": "pm2 start index.js",
     "stop": "pm2 stop index",
     "test": "echo \"Error: no test specified\" && exit 1"

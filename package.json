@@ -4,6 +4,7 @@
   "description": "Image uploader backend API build using Express using MongoDB storage",
   "main": "index.js",
   "scripts": {
+    "start-dev": "nodemon index.js NODE_ENV=production",
     "start": "nodemon index.js",
     "dev": "pm2 start index.js",
     "stop": "pm2 stop index",
@@ -23,7 +24,6 @@
     "express": "^4.17.1",
     "http-errors": "^2.0.0",
     "mongoose": "^6.0.14",
-    "multer": "^1.4.3",
     "nodemon": "^2.0.15",
     "pm2": "^5.1.2",
     "uuid": "^8.3.2"

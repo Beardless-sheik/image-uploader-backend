@@ -17,13 +17,12 @@ const postImage = async(req, res, next) => {
     throw new Error("no image Url passed")
   }
   catch(error) {
-    console.log(error);
     const httpError = createHttpError(500, error);
     // res.status(500).json({ 
     //   message: 'Saving image failed!',
     //   error: error.message,
     // });
-    return next(httpError);
+    return next(httpError, {});
   }
 }
 

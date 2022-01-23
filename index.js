@@ -1,7 +1,6 @@
 const images = require('./routes/images.routes');
 require('dotenv').config(); 
 const express = require('express'),
-      multer = require('multer'),
 	  mongoose = require('mongoose'),
 	  uuidv4 = require('uuid');
 		database = require('./database/database.js');

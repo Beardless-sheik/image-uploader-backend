@@ -4,7 +4,7 @@ const mongoose = require('mongoose'),
 /**
  * User Schema
  */
-var userSchema = new Schema({
+let userSchema = new Schema({
   fullName: {
     type: String,
     required: [true, "fullname not provided "],

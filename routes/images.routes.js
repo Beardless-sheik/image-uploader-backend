@@ -8,19 +8,6 @@ const createHttpError = require('http-errors');
 router.post('/', (req, res, next) => imageControllers.postImage(req,res,next))
 
 // define the get images route
-router.get('/', async (req, res, next) => {
-  try {
-    const result = await imageModel.find({});;
-    res.status(200).json({data: result});
-  } catch (error) {
-    console.log(error);
-    const httpError = createHttpError(500, error);
-    // res.status(500).json({ 
-		// 	message: 'Getting all images failed! See error in response',
-		// 	error: error.message,
-		// });
-    return next(httpError);
-  }
-})
+router.get('/', (req, res, next) => imageControllers.getImage(req, res, next)); 
 
 module.exports = router

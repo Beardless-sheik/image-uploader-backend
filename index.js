@@ -13,7 +13,7 @@ dotenv.config();
 database.connectToDatabase();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(errorHandlerMiddleware);
 app.get('/', (req, res) => res.send('Upload Images API is running !'));
 app.use('/', routeRouter);
-app.use(errorHandlerMiddleware);
 app.listen(process.env.PORT, () => console.log('Server ready'));

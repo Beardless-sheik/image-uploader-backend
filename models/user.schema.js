@@ -21,12 +21,6 @@ let userSchema = new Schema({
       },
       message: '{VALUE} is not a valid email!'
     }
-
-  },
-  role: {
-    type: String,
-    enum: ["normal", "admin"],
-    required: [true, "Please specify user role"]
   },
   password: {
     type: String,

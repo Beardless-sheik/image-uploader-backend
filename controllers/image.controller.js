@@ -22,4 +22,15 @@ const postImage = async(req, res, next) => {
   }
 }
 
-module.exports = {postImage}
+const getImage = async(req, res,next) => {
+  try {
+    const result = await imageModel.find({});;
+    res.status(200).json({data: result});
+  } catch (error) {
+    console.log(error);
+    const httpError = createHttpError(500, error);
+    return next(httpError);
+  }
+}
+
+module.exports = {postImage, getImage};

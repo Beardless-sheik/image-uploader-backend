@@ -2,8 +2,9 @@ const routeRouter = require('./routes/router.index');
 require('dotenv').config(); 
 const express = require('express'),
 	  mongoose = require('mongoose'),
-	  uuidv4 = require('uuid');
-		database = require('./database/database.js');
+	  uuidv4 = require('uuid'),
+		database = require('./database/database.js'),
+    log = require('loglevel');
 const app = express();
 
 const dotenv = require('dotenv');

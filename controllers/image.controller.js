@@ -18,7 +18,7 @@ const postImage = async(req, res, next) => {
   }
   catch(error) {
     const httpError = createHttpError(500, error);
-    return next(httpError, {});
+    return next(httpError);
   }
 }
 

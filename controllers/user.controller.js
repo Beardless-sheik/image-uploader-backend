@@ -2,8 +2,8 @@
 const bcrypt = require("bcrypt");
 const User = require('../models/user.schema');
 const createHttpError = require('http-errors');
-const log = require('loglevel');
 const mongoose = require('mongoose');
+const log = require('loglevel');
 
 const registerUser = async(req, res, next) => {
   let user;
@@ -22,13 +22,44 @@ const registerUser = async(req, res, next) => {
   } catch (error) {
     if(error.code === 11000){
       res.status(400).json({error: 'duplicate email presented and only one user can have one unique email' });
-    } else {
+    } // else if(error.code === ){   } 
+    else {
     const httpError = createHttpError(500, error);
     next(httpError);
     }
     }
   }; 
 };
+
+const loginUser = async(req, res, next) => {
+  let loginUsersId;
+  if(!req.body.email) {
+    res.status(400).json({errorMessage: " User login failed: Check e-mail & password parameters"})
+  }
+
+  // Find Id of user being Logged in given email
+  try{ 
+  loginUsersId =  await User.findOne({
+          email: req.body.email
+       }, '_id').exec() //._id.toString();
+   if(!loginUsersId) {
+    throw {status : 4010 , message : 'Username does not exist on this database'}
+  }
+  loginUsersId = loginUsersId._id.toString();
+  log.warn(loginUsersId);
+} catch (error) {
+  if(error.status === 4010) {
+    res.status(401).json({errorMessage: error.message});
+  } else {
+  log.warn('error code:', error);
+  const httpError = createHttpError(500, error);
+    next(httpError);
+  }
+}
+
+} 
+
+
 //   user.save((err, user) => {
 //     if (err) {
 //       res.status(500)
@@ -98,4 +129,4 @@ const registerUser = async(req, res, next) => {
 //     });
 // };
 
-module.exports = {registerUser};
+module.exports = {registerUser, loginUser};
